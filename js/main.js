@@ -12,4 +12,5 @@ app.controller('tabelasController',function($scope,$http){
         $scope.ligas = response.data;
     });
 
-})
+   
+});

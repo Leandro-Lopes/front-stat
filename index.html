@@ -55,39 +55,36 @@
     <div class="container" >
       <!-- Example row of columns -->
       <div class="box-options">
-         <select ng-model="ligaFilter" name="show-filter" ng-options="liga as liga.Liga.nome for liga in ligas">
-          
+         <select ng-model="ligaFilter" name="show-filter" ng-options="liga as liga.Liga.nome for liga in ligas">    
          </select>
-         {{ligaFilter.Liga.id}}
          
 
       </div>
       <table class="table table-striped table-bordered table-condensed">
         <thead>
-            <th>
-              <td style="text-align:center">Pos</td>
-              <td>Nome</td>
-              <td>Partidas</td>
-              <td>Casa</td>
-              <td>Fora</td>  
-              <td>Pontos</td>
-              <td>P Casa</td>
-              <td>P Fora</td>
-              <td>V</td>
-              <td>E</td>
-              <td>D</td>                          
-              <td>Gols P</td>
-              <td>Gols C</td>
-              <td>SG</td>
-              <td>Apr To</td>
-              <td>Apr Ca</td>
-              <td>Apr Fo</td>
-          </th>
+            <tr>
+              <th style="text-align:center">Pos</th>
+              <th>Nome</th>
+              <th>Partidas</th>
+              <th>Casa</th>
+              <th>Fora</th>  
+              <th>pontos</th>
+              <th>P Casa</th>
+              <th>P Fora</th>
+              <th>V</th>
+              <th>E</th>
+              <th>D</th>                          
+              <th>Gols P</th>
+              <th>Gols C</th>
+              <th>SG</th>
+              <th>Apr To</th>
+              <th>Apr Ca</th>
+              <th>Apr Fo</th>
+          </tr>
         </thead>
-        {{ligaFilter.Liga.id}}
-        <tbody>
-            <tr ng-repeat="dado in dados | filter :{liga_id : ligaFilter.Liga.id">
-                  <td></td>
+        <tbody> 
+            <tr ng-repeat="dado in dados | filter :ligaFilter.Liga.nome | orderBy:['-Tabela.pontos','-Tabela.vitoria']">
+              
                   <td style="text-align:center">{{$index + 1}}</td>
                   <td style="width:200px">{{dado.Tabela.time_nome}}</td>
                   <td>{{(dado.Tabela.casa *1) + (dado.Tabela.fora *1)}}</td>
@@ -112,7 +109,7 @@
          
 
       </table>
-
+     
       <hr>
 
       <footer>
